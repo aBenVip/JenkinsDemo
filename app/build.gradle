@@ -41,9 +41,15 @@ android {
         //other {}
     }
 
-    productFlavors.all {
-//        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    //修改生成的apk名字
+    applicationVariants.all{ variant->
+        variant.outputs.each { output ->
+            if ("true".equals(IS_JENKINS)) {
+                outDirectory = "/usr/local"
+            }
+        }
     }
+
 }
 
 dependencies {
