@@ -42,9 +42,9 @@ android {
     }
 
     //修改生成的apk名字
-    applicationVariants.all{ variant->
+    applicationVariants.all { variant ->
         variant.outputs.each { output ->
-                outDirectory = "/usr/local"
+            outDirectory = '/usr/local'
         }
     }
 
