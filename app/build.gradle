@@ -44,9 +44,7 @@ android {
     //修改生成的apk名字
     applicationVariants.all{ variant->
         variant.outputs.each { output ->
-            if ("true".equals(IS_JENKINS)) {
                 outDirectory = "/usr/local"
-            }
         }
     }
 
