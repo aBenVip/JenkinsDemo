@@ -9,12 +9,40 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        flavorDimensions "versionCode"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+        beta {
+
+        }
+//        online {} //版本更新
+//        tengxun {}
+//        qihu360 {}  //360
+//        xiaomi {}
+//        oppo {}
+//        mumayi {}
+//        sougou {}
+        //baidus {}
+        //samsung {}
+        //huawei {}
+        //meizu {}
+        //lenovo {}
+        //jinli {}
+        //other {}
+    }
+
+    productFlavors.all {
+//        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
     }
 }
 
