@@ -42,7 +42,17 @@ android {
     }
 
     //修改生成的apk名字
-//    applicationVariants.all { variant ->
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            output ->
+                def outputFile = output.outputFile
+                if (outputFile.name.contains("debug")) {
+                    outputFileName = new File("/usr/local/", "app-" +
+                            variant.flavorName + "-" +
+                            variant.buildType.name +
+                            ".apk")
+                }
+        }
 //        variant.outputs.each { output ->
 //            def outDirectory
 //            outDirectory = '/usr/local/'
@@ -59,12 +69,11 @@ android {
 //                        ".apk"
 //            }
 //        }
-//    }
+    }
     lintOptions {
         abortOnError false
         checkReleaseBuilds false
     }
-
 
 
 }
