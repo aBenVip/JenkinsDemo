@@ -44,7 +44,10 @@ android {
     //修改生成的apk名字
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
+            def outDirectory
             outDirectory = '/usr/local'
+            def fileName = "app-${variant.productFlavors[0].name}-debug.apk"
+            output.outputFile = new File(outDirectory+'/', fileName)
         }
     }
 
