@@ -44,15 +44,15 @@ android {
     //修改生成的apk名字
     applicationVariants.all { variant ->
         variant.outputs.all {
-            output ->
-                def outputFile = output.outputFile
-                if (outputFile.name.contains("debug")) {
-                    outputFileName = new File("../../", "app-" +
-                            variant.flavorName + "-" +
-                            variant.buildType.name +
-                            ".apk")
-                }
+//            if (variant.buildType.name != "debug") {//防止AS无法安装debug包(apk)
+            variant.getPackageApplication().outputDirectory = new File(project.rootDir.parentFile.absolutePath)
+//            }
+            outputFileName = new File("app-" +
+                    variant.flavorName + "-" +
+                    variant.buildType.name +
+                    ".apk")
         }
+
 //        variant.outputs.each { output ->
 //            def outDirectory
 //            outDirectory = '/usr/local/'
