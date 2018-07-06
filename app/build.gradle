@@ -45,11 +45,27 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             def outDirectory
-            outDirectory = '/usr/local'
-            def fileName = "app-${variant.productFlavors[0].name}-debug.apk"
-            output.outputFile = new File(outDirectory+'/', fileName)
+            outDirectory = '/usr/local/'
+            def fileName = "app-${variant.productFlavors.name}-debug.apk"
+            //这个修改输出的APK路径
+            if (variant.buildType.name != "debug") {//防止AS无法安装debug包(apk)
+                variant.getPackageApplication().outputDirectory = new File(outDirectory)
+            }
+            variant.getPackageApplication().outputScope.apkDatas.forEach { apkData ->
+                //这个修改输出APK的文件名
+                apkData.outputFileName = "app-" +
+                        variant.flavorName + "-" +
+                        variant.buildType.name +
+                        ".apk"
+            }
         }
     }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+
 
 }
 
