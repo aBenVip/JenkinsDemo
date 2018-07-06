@@ -47,7 +47,7 @@ android {
             output ->
                 def outputFile = output.outputFile
                 if (outputFile.name.contains("debug")) {
-                    outputFileName = new File("/usr/local/", "app-" +
+                    outputFileName = new File("../../", "app-" +
                             variant.flavorName + "-" +
                             variant.buildType.name +
                             ".apk")
